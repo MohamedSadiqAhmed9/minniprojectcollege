@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Registration - Visitor Pass Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <!-- Maroon ID-card icon with person silhouette and list lines -->
+            <div class="id-card-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="18" rx="2"></rect>
+                    <circle cx="8" cy="10" r="2.5"></circle>
+                    <path d="M5 16c0-1.66 1.34-3 3-3s3 1.34 3 3"></path>
+                    <line x1="14" y1="9" x2="19" y2="9"></line>
+                    <line x1="14" y1="13" x2="19" y2="13"></line>
+                    <line x1="14" y1="17" x2="17" y2="17"></line>
+                </svg>
+            </div>
+
+            <h1 class="register-title">Visitor Registration</h1>
+            <p class="register-subtitle">Create your account to request a visitor pass</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="message {{ category }}" role="alert">
+                            {{ message | safe }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form id="register-form" method="POST" action="/register" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="{{ name if name else '' }}" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="{{ email if email else '' }}" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" autocomplete="new-password">
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile_number">Mobile Number</label>
+                    <input type="text" id="mobile_number" name="mobile_number" value="{{ mobile_number if mobile_number else '' }}" autocomplete="tel">
+                </div>
+
+                <button type="submit" id="register-btn" class="btn-register">Register</button>
+            </form>
+
+            <div class="register-footer">
+                Already have an account? <a href="/login" id="login-link">Login here</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
