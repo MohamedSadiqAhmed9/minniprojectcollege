@@ -5,5 +5,6 @@ main_bp = Blueprint("main", __name__)
 
 @main_bp.route("/", methods=["GET"])
 def index():
-    """Root route redirects to visitor registration."""
-    return redirect(url_for("auth.register"), code=302)
+    """Root route redirects to login."""
+    return redirect(url_for("auth.login"), code=302)
+

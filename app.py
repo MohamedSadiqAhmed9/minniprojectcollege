@@ -6,6 +6,7 @@ from models import db
 from controllers.main_controller import main_bp
 from controllers.db_controller import db_bp
 from controllers.auth_controller import auth_bp
+from controllers.dashboard_controller import dashboard_bp
 
 load_dotenv()
 
@@ -38,8 +39,10 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(db_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(dashboard_bp)
 
     return app
+
 
 
 app = create_app()

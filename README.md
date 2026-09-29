@@ -72,16 +72,21 @@ Open your browser and visit: **`http://localhost:5001/`**
 │   ├── db_helpers.py           # Database CRUD helper functions
 │   └── user_model.py           # User management queries
 ├── controllers/
-│   ├── main_controller.py      # Root route (redirects to /register)
+│   ├── main_controller.py      # Root route (redirects to /login)
 │   ├── db_controller.py        # Database connection check (/test-db)
-│   └── auth_controller.py      # Registration & authentication
+│   ├── auth_controller.py      # Registration, login, and logout routes
+│   └── dashboard_controller.py # Role-based dashboards (/officer/dashboard, /visitor/dashboard)
 ├── templates/
 │   ├── register.html           # Visitor registration view
-│   ├── login.html              # Login view placeholder
-│   ├── dashboard.html          # Dashboard view placeholder
+│   ├── login.html              # Login view
+│   ├── officer_dashboard.html  # Security Officer landing dashboard
+│   ├── visitor_dashboard.html  # Visitor landing dashboard
+│   ├── dashboard.html          # Generic dashboard view placeholder
 │   └── passes.html             # Passes view placeholder
 ├── static/
 │   ├── css/register.css        # Registration page styling
+│   ├── css/login.css           # Login page styling
+│   ├── css/dashboard.css       # Dashboard landing pages styling
 │   ├── js/                     # Static JavaScript
 │   └── images/                 # Static Images
 ├── SETUP_GUIDE.md              # Detailed setup documentation
@@ -91,5 +96,15 @@ Open your browser and visit: **`http://localhost:5001/`**
 ---
 
 ## 👥 Default Accounts
-- **Security Officer**: `admin@example.com` / `admin123`
-- **Visitor**: `end_user@example.com` / `user123`
+- **Security Officer**: `admin@example.com` / `admin123` &rarr; Lands on `/officer/dashboard`
+- **Visitor**: `end_user@example.com` / `user123` &rarr; Lands on `/visitor/dashboard`
+
+---
+
+## 🔐 Task 4: Login, Sessions & Role Dashboards
+- **Root Redirection**: `GET /` redirects directly to `GET /login`.
+- **Authentication**: `POST /login` verifies credentials via `authenticate_user()` and creates a secure session with `user_id`, `user_name`, and `role`.
+- **Role-Based Routing**: Security Officers are routed to `/officer/dashboard`, Visitors to `/visitor/dashboard`.
+- **Session Cleanup**: `GET /logout` completely clears all session keys (`session.clear()` and `session.modified = True`) and returns to `/login`.
+- **Route Protection**: Dashboards automatically reject and redirect unauthenticated or incorrect-role users back to `/login`.
+

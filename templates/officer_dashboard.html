@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Officer Dashboard - Visitor Pass Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body id="officer-dashboard-page">
+    <header class="dashboard-navbar">
+        <div class="brand-wrapper">
+            <div class="brand-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="18" rx="2"></rect>
+                    <circle cx="8" cy="10" r="2.5"></circle>
+                    <path d="M5 16c0-1.66 1.34-3 3-3s3 1.34 3 3"></path>
+                    <line x1="14" y1="9" x2="19" y2="9"></line>
+                    <line x1="14" y1="13" x2="19" y2="13"></line>
+                    <line x1="14" y1="17" x2="17" y2="17"></line>
+                </svg>
+            </div>
+            <div class="brand-title">Visitor Pass System</div>
+        </div>
+
+        <div class="user-nav-actions">
+            <div class="user-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>Security Officer</span>
+            </div>
+            <a href="/logout" id="officer-logout-link" class="btn-logout">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Logout</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="welcome-card">
+            <h1 class="welcome-title">Security Officer Dashboard</h1>
+            <p class="welcome-subtitle">Welcome back, <strong>{{ user_name }}</strong>. Monitor and manage visitor passes, requests, and entries.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="stat-card">
+                <div class="card-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <div class="card-title">Pending Pass Requests</div>
+                <div class="card-description">Review visitor requests awaiting approval and identity verification.</div>
+                <span class="card-tag">Module Ready for Task 6</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                </div>
+                <div class="card-title">Active Passes</div>
+                <div class="card-description">View visitors currently on campus with valid and authorized passes.</div>
+                <span class="card-tag">Campus Security</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 14 14"></polyline>
+                    </svg>
+                </div>
+                <div class="card-title">Pass History & Logs</div>
+                <div class="card-description">Audit previous visits, entry and exit timestamps, and visitor pass records.</div>
+                <span class="card-tag">Audit Trail</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+        Visitor Pass Management System &bull; Security Officer Portal
+    </footer>
+</body>
+</html>
